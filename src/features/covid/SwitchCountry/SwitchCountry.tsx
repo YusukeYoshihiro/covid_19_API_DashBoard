@@ -53,7 +53,7 @@ const SwitchCountry:React.FC = () => {
           }
          >
           {slugs.map((slug, index)=>(
-            <option key={index} defaultValue="japan">
+            <option key={index} value={slug} defaultValue="japan">
                 {slug}
             </option>
           ))}
