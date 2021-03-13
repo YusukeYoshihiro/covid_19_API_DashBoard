@@ -29,12 +29,12 @@ import PieChart from '../PieChart/PieChart';
  }));
  
 const Dashboard:React.FC = () => {
-  const classes = useStyles();
+   const classes = useStyles();
    const dispatch = useDispatch();
    const daily = useSelector(selectDaily)
 
    useEffect(() => {
-    dispatch(fetchAsyncGetDaily("japan"));
+    dispatch(fetchAsyncGetDaily("canada"));
   }, [dispatch])
   return (
     <main>

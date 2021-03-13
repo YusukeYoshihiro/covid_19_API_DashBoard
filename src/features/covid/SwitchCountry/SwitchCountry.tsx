@@ -1,9 +1,10 @@
 import React,{useState, useEffect} from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { NativeSelect, FormControl } from '@material-ui/core';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
+
 import axios from 'axios';
-import { fetchAsyncGetDaily } from '../covidSlice';
+import { fetchAsyncGetDaily, selectCountry } from '../covidSlice';
 
 // import { fetchAsyncGetCountry } from '../covidSlice'; 
 
@@ -22,6 +23,7 @@ const SwitchCountry:React.FC = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const [slugs, setSlug] = useState<string[]>([]);
+  const country = useSelector(selectCountry);
   
   useEffect(() => {
     const getContries= async ()=> {
@@ -52,9 +54,10 @@ const SwitchCountry:React.FC = () => {
             dispatch(fetchAsyncGetDaily(e.target.value))
           }
          >
-          {slugs.map((slug, index)=>(
-            <option key={index} value={slug} defaultValue="japan">
-                {slug}
+         <option value={country} > {`${country.charAt(0).toUpperCase()}${country.substring(1).toLowerCase()}`}</option>
+          {slugs.sort().map((slug, index)=>(
+            <option key={index} value={slug} defaultValue="canada">
+                {`${slug.charAt(0).toUpperCase()}${slug.substring(1).toLowerCase()}`}
             </option>
           ))}
          </NativeSelect>
