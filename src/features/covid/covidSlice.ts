@@ -18,7 +18,7 @@ type covidState = {
 // Initial State
 const  initialState:covidState = {
   daily: dataDaily,
-  country: "Japan",
+  country: "canada",
 }
 
 // Getting covid19 API data from apiUrl with Generics.
